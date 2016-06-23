@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :location do
-    is_donor { rand > 0.5 ? true : false }
     address { "710 31st St., Boulder, CO, 80303" }
     name "Some place"
     contact "Some dude"
@@ -18,11 +17,11 @@ FactoryGirl.define do
     onsite_contact_info "Some people"
 
     factory :recipient do
-      is_donor false
+      location_type Location::LocationType[0]
     end
 
     factory :donor do
-      is_donor true
+      location_type Location::LocationType[1]
     end
   end
 end

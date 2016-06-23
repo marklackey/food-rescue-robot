@@ -6,11 +6,11 @@ FactoryGirl.define do
     password "SomePassword"
 
     factory :volunteer_with_assignment do
-      after(:create) do |v|
-        a = create(:assignment,volunteer:v)
-        v.assignments << a
-        v.assigned = true
-        v.save
+      after(:create) do |volunteer|
+        assignment = create(:assignment, volunteer: volunteer)
+        volunteer.assignments << assignment
+        volunteer.assigned = true
+        volunteer.save
       end
     end
 

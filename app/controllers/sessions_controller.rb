@@ -30,9 +30,9 @@ class SessionsController < Devise::SessionsController
         user = Volunteer.find_by_authentication_token(params[:authentication_token])
         if user
           user.reset_authentication_token
-          render :json => { :message => 'Session deleted.' }, :success => true, :status => 204
+          render json: { message: 'Session deleted.' }, success: true, status: 204
         else
-          render :json => { :message => 'Invalid token.' }, :status => 404
+          render json: { message: 'Invalid token.' }, status: 404
         end
       }
     end

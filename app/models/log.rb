@@ -2,14 +2,14 @@ class Log < ActiveRecord::Base
   WhyZero = {1 => "No Food", 2 => "Didn't Happen"}
 
   belongs_to :schedule_chain
-  belongs_to :donor, :class_name => "Location", :foreign_key => "donor_id"
+  belongs_to :donor, class_name: "Location", foreign_key: "donor_id"
   belongs_to :scale_type
   belongs_to :transport_type
   belongs_to :region
 
   has_many :log_volunteers
-  has_many :volunteers, :through => :log_volunteers,
-           :conditions=>{"log_volunteers.active"=>true}
+  has_many :volunteers, through:  :log_volunteers,
+           conditions: {"log_volunteers.active"=>true}
   has_many :inactive_volunteers, :through => :log_volunteers,
            :conditions=>{"log_volunteers.active"=>false}
   has_many :log_recipients

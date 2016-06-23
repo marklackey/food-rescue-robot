@@ -321,6 +321,7 @@ class LogsController < ApplicationController
     @start_date = Date.new(params[:start_date][:year].to_i,params[:start_date][:month].to_i,params[:start_date][:day].to_i)
     @stop_date = Date.new(params[:stop_date][:year].to_i,params[:stop_date][:month].to_i,params[:stop_date][:day].to_i)
     @loc = Location.find(params[:location_id])
+
     unless current_volunteer.any_admin?(@loc.region)
       flash[:notice] = "Cannot generate receipt for donors/receipients in other regions than your own!"
       redirect_to(root_path)
